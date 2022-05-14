@@ -25,9 +25,7 @@ mongoose.connection.on("disconnected", () => {
 });
 
 //middlewares
-app.use(cors({
-  origin: "http://localhost:8800",
-}))
+app.use(cors())
 app.use(cookieParser())
 app.use(express.json());
 
@@ -47,7 +45,7 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(8800, () => {
+app.listen(process.env.PORT || 8800, () => {
   connect();
   console.log("Connected to backend.");
 });
